@@ -3,6 +3,7 @@ const { readFileSync, read } = require('fs')
 
 // get all files
 const homePage = readFileSync('./index.html')
+
 const server = http.createServer((request, response) => {
   const url = request.url
   console.log(url)
@@ -12,7 +13,7 @@ const server = http.createServer((request, response) => {
     response.writeHead(200, {
       'content-type': 'text/html'
     })
-    response.write('<h1>The Home Page</h1>')
+    response.write(homePage)
     response.end()
   } else if (url === '/about') {
     // About Page
