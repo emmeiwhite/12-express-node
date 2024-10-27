@@ -1,6 +1,8 @@
 const http = require('http')
 
 const server = http.createServer((request, response) => {
+  const url = request.url
+  console.log(url)
   response.writeHead(200, {
     'content-type': 'text/html'
   })
