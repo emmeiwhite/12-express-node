@@ -3,6 +3,7 @@ const { readFileSync, read } = require('fs')
 
 // get all files
 const homePage = readFileSync('./navbar-app/index.html')
+const homeStyles = readFileSync('./navbar-app/styles.css')
 
 const server = http.createServer((request, response) => {
   const url = request.url
@@ -14,6 +15,13 @@ const server = http.createServer((request, response) => {
       'content-type': 'text/html'
     })
     response.write(homePage)
+    response.end()
+  } else if (url === '/styles.css') {
+    // About Page
+    response.writeHead(200, {
+      'content-type': 'text/css'
+    })
+    response.write(homeStyles)
     response.end()
   } else if (url === '/about') {
     // About Page
