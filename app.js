@@ -11,7 +11,7 @@ const server = http.createServer((request, response) => {
   if (url === '/') {
     // Homepage
     response.writeHead(200, {
-      'content-type': 'text/html'
+      'content-type': 'text/plain'
     })
     response.write(homePage)
     response.end()
