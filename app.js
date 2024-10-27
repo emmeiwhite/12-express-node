@@ -2,7 +2,7 @@ const http = require('http')
 const { readFileSync, read } = require('fs')
 
 // get all files
-const homePage = readFileSync('./index.html')
+const homePage = readFileSync('./navbar-app/index.html')
 
 const server = http.createServer((request, response) => {
   const url = request.url
@@ -11,7 +11,7 @@ const server = http.createServer((request, response) => {
   if (url === '/') {
     // Homepage
     response.writeHead(200, {
-      'content-type': 'text/plain'
+      'content-type': 'text/html'
     })
     response.write(homePage)
     response.end()
