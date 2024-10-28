@@ -1,11 +1,9 @@
 const express = require('express')
 const app = express()
 
+const { products } = require('./data')
 app.get('/', (req, res) => {
-  res.json([
-    { name: 'Sahil', id: 1 },
-    { name: 'Immi Kaak', id: 2 }
-  ])
+  res.json(products)
 })
 
 app.listen(5000, () => {
