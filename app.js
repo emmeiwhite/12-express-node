@@ -19,6 +19,19 @@ app.get('/api/products', (req, res) => {
   //   res.send('products')
 })
 
+/** --- Route Parameters for Dynamism --- */
+app.get('/api/products/:productID', (req, res) => {
+  const { productID } = req.params
+  //   console.log(productID)
+
+  const currentProduct = products.find(product => product.id === productID)
+  console.log(currentProduct)
+
+  currentProduct
+    ? res.json(currentProduct)
+    : res.send(`<h1>This product ${productID} does not exist</h1>`)
+})
+
 app.listen(5000, () => {
   console.log('listening on port 5000')
 })
