@@ -1,8 +1,9 @@
 const express = require('express')
+const path = require('path')
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('The Home Page')
+  res.sendFile(path.resolve(__dirname, './navbar-app/index.html'))
 })
 
 app.all('*', (req, res) => {
