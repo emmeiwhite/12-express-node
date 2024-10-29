@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
         </div>`)
 })
 
+/*--
 app.get('/api/products', (req, res) => {
   const newProducts = products.map(({ id, name, image }) => {
     return { id, name, image }
@@ -18,6 +19,7 @@ app.get('/api/products', (req, res) => {
   res.json(newProducts)
   //   res.send('products')
 })
+  --*/
 
 /** --- Route Parameters for Dynamism --- */
 app.get('/api/products/:productID', (req, res) => {
@@ -35,6 +37,13 @@ app.get('/api/products/:productID', (req, res) => {
 app.get('/api/v1/search', (req, res) => {
   const { name, age } = req.query
   res.send(`<p>User details: Name is ${name} & Age is ${age}</p>`)
+})
+
+app.get('/api/v1/products', (req, res) => {
+  const { search, limit } = req.query
+  res.send(
+    `<p>Searching products that start with : <strong>${search}</strong> & limit: <strong>${limit}</strong></p>`
+  )
 })
 
 app.listen(5000, () => {
