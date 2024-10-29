@@ -22,14 +22,19 @@ app.get('/api/products', (req, res) => {
 /** --- Route Parameters for Dynamism --- */
 app.get('/api/products/:productID', (req, res) => {
   const { productID } = req.params
-  //   console.log(productID)
 
   const currentProduct = products.find(product => product.id === productID)
-  console.log(currentProduct)
 
   currentProduct
     ? res.json(currentProduct)
     : res.send(`<h1>This product ${productID} does not exist</h1>`)
+})
+
+/** --- Query String Parameter for filtering etc --- */
+
+app.get('/api/v1/search', (req, res) => {
+  const { name, age } = req.query
+  res.send(`<p>User details: Name is ${name} & Age is ${age}</p>`)
 })
 
 app.listen(5000, () => {
