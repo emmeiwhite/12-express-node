@@ -41,9 +41,20 @@ app.get('/api/v1/search', (req, res) => {
 
 app.get('/api/v1/products', (req, res) => {
   const { search, limit } = req.query
-  res.send(
-    `<p>Searching products that start with : <strong>${search}</strong> & limit: <strong>${limit}</strong></p>`
-  )
+
+  const updatedProducts = [...products]
+
+  if (search) {
+    const filteredProducts = updatedProducts.filter(product => product.name.startsWith(search))
+    res.status(200).json(filteredProducts)
+  }
+
+  if (limit) {
+    const limitedItems = updatedProducts.slice(0, Number(limit))
+    res.status(200).json(limitedItems)
+  }
+
+  return res.status(200).json(updatedProducts)
 })
 
 app.listen(5000, () => {
