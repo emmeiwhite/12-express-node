@@ -42,19 +42,22 @@ app.get('/api/v1/search', (req, res) => {
 app.get('/api/v1/products', (req, res) => {
   const { search, limit } = req.query
 
-  const updatedProducts = [...products]
+  // We'll modify the same copied sortedProducts
+  let sortedProducts = [...products]
 
   if (search) {
-    const filteredProducts = updatedProducts.filter(product => product.name.startsWith(search))
-    res.status(200).json(filteredProducts)
+    sortedProducts = sortedProducts.filter(product => product.name.startsWith(search))
   }
 
   if (limit) {
-    const limitedItems = updatedProducts.slice(0, Number(limit))
-    res.status(200).json(limitedItems)
+    sortedProducts = sortedProducts.slice(0, Number(limit))
   }
 
-  return res.status(200).json(updatedProducts)
+  if (sortedProducts.length < 1) {
+    return res.status(200).json({ success: true, data: [] })
+  }
+
+  return res.status(200).json(sortedProducts)
 })
 
 app.listen(5000, () => {
