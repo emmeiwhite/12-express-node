@@ -8,6 +8,7 @@ const homeImage = readFileSync('./navbar-app/logo.svg')
 const homeJavaScript = readFileSync('./navbar-app/browser-app.js')
 
 const server = http.createServer((request, response) => {
+  // createServer() function is called a request handler
   const url = request.url
   console.log(url)
 
