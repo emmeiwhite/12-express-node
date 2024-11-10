@@ -1,1 +1,1 @@
-require('./node-foundations/1.globals') // The absolute path to the directory
+require('./node-foundations/2.modules') // The absolute path to the directory
