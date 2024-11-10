@@ -7,3 +7,6 @@
  * 4. modules: To export values from a module
  * 5. process: To get the environment details
  */
+
+console.log(__dirname)
+console.log(__filename)
